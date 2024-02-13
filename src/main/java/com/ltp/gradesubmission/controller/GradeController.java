@@ -21,7 +21,14 @@ public class GradeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GradeController.class);
 
-    GradeService gradeService = new GradeService();
+    //@Autowired
+    GradeService gradeService;
+
+    //@Autowired
+    public GradeController(GradeService gradeService) {
+        this.gradeService = gradeService;
+    }
+
 
     @GetMapping("/")
     public String getForm(Model model, @RequestParam(required = false) String id) {

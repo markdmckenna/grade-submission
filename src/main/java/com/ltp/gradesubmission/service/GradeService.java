@@ -4,16 +4,22 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import com.ltp.gradesubmission.Constants;
 import com.ltp.gradesubmission.Grade;
 import com.ltp.gradesubmission.repository.GradeRepository;
 
+@Service
 public class GradeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GradeService.class);
 
-    GradeRepository gradeRepository = new GradeRepository();
+    GradeRepository gradeRepository;
+
+    public GradeService(GradeRepository gradeRepository) {
+        this.gradeRepository = gradeRepository;
+    }
 
     public Grade getGrade(int index) {
         LOGGER.info("[IN]GradeService - getGrade - index: {}", index);
@@ -34,7 +40,7 @@ public class GradeService {
         return this.gradeRepository.getGrades();
     }
 
-    public int getGradeIndex(String id) {
+    private int getGradeIndex(String id) {
         LOGGER.warn("[IN]GradeService - getGradeIndex - id: {}", id);
         for (int i = 0; i < this.getGrades().size(); i++) {
             if (this.getGrade(i).getId().equals(id))
