@@ -40,8 +40,8 @@ public class GradeService {
         return this.gradeRepository.getGrades();
     }
 
-    private int getGradeIndex(String id) {
-        LOGGER.warn("[IN]GradeService - getGradeIndex - id: {}", id);
+    public int getGradeIndex(String id) {
+        LOGGER.info("[IN]GradeService - getGradeIndex - id: {}", id);
         for (int i = 0; i < this.getGrades().size(); i++) {
             if (this.getGrade(i).getId().equals(id))
                 return i;

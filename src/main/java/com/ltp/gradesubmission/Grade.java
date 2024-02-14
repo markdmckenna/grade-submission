@@ -3,11 +3,9 @@ package com.ltp.gradesubmission;
 import java.util.UUID;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Grade {
 
     private String id;
@@ -21,5 +19,14 @@ public class Grade {
     public Grade() {
         this.id = UUID.randomUUID().toString();
     }
+
+    public Grade(String name, String subject, String score) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.subject = subject;
+        this.score = score;
+    }
+
+
 
 }

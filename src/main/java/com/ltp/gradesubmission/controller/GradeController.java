@@ -39,7 +39,7 @@ public class GradeController {
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Grade grade, BindingResult bindingResult) {
         LOGGER.info("[IN]GradeController - submitForm - grade: {} - bindResult.hasErrors(): {}", grade, bindingResult.hasErrors());
-        if (bindingResult.hasErrors()) return "Form";
+        if (bindingResult.hasErrors()) return "form";
         this.gradeService.submitGrade(grade);
         return "redirect:/grades";
     }
